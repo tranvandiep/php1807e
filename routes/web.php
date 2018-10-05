@@ -15,6 +15,21 @@ Route::get('/', function () {
 		return view('welcome');
 	});
 
+Route::get('/input', function () {
+		return view('input');
+	});
+
+Route::post('/inputStudent', [
+		'as'   => 'inputStudent',
+		'uses' => 'StudentController@inputStudent'
+	]);
+
+Route::get('/showStudents', [
+		'as'   => 'showStudents',
+		'uses' => 'StudentController@showStudents'
+	]);
+// Route::post('/inputStudent', 'StudentController@inputStudent')->name('inputStudent');
+
 Route::group(['middleware' => 'auth'], function () {
 		//    Route::get('/link1', function ()    {
 		//        // Uses Auth Middleware
