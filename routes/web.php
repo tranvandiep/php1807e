@@ -15,9 +15,20 @@ Route::get('/', function () {
 		return view('welcome');
 	});
 
-Route::get('/input', function () {
-		return view('input');
-	});
+Route::get('/input', [
+		'as'   => 'input',
+		'uses' => 'StudentController@input'
+	]);
+
+Route::get('/deleteStudent/{id}', [
+		'as'   => 'deleteStudent',
+		'uses' => 'StudentController@deleteStudent'
+	]);
+
+Route::post('/deleteStudent', [
+		'as'   => 'deleteStudentForm',
+		'uses' => 'StudentController@deleteStudentForm'
+	]);
 
 Route::post('/inputStudent', [
 		'as'   => 'inputStudent',
@@ -28,7 +39,6 @@ Route::get('/showStudents', [
 		'as'   => 'showStudents',
 		'uses' => 'StudentController@showStudents'
 	]);
-// Route::post('/inputStudent', 'StudentController@inputStudent')->name('inputStudent');
 
 Route::group(['middleware' => 'auth'], function () {
 		//    Route::get('/link1', function ()    {
@@ -38,54 +48,3 @@ Route::group(['middleware' => 'auth'], function () {
 		//Please do not remove this if you want adminlte:route and adminlte:link commands to works correctly.
 		#adminlte_routes
 	});
-
-Route::get('/su-kien/{url_param}', function ($url_param) {
-		echo $url_param;
-		// return "ABC";
-	});
-
-Route::get('/abc/{param1}/{param2}', function ($param1, $param2) {
-		echo $param1;
-		echo "<br/>";
-		echo $param2;
-		// return "ABC";
-	});
-
-Route::get('/abc/{param1}-{param2}', function ($param1, $param2) {
-		echo $param1;
-		echo "<br/>";
-		echo $param2;
-		// return "ABC";
-	});
-
-// Route::get('/xinchao', function () {
-// 		echo "Hello";
-// 		// return "ABC";
-// 	});
-
-// Route::get('/xinchao/abc', function () {
-// 		echo "Hello ABC";
-// 		// return "ABC";
-// 	});
-
-Route::group(['prefix' => '/xinchao'], function () {
-		Route::get('/', function () {
-				echo "Hello";
-				// return "ABC";
-			});
-
-		Route::get('/test', function () {
-				return view('test');
-			});
-
-		Route::get('/abc', function () {
-				echo "Hello ABC";
-				// return "ABC";
-			});
-	});
-
-Route::get('test', 'TestController@showTest');
-
-Route::get('testView', 'TestController@showTestView');
-
-Route::get('test/{param}', 'TestController@showTest2');
