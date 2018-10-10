@@ -15,6 +15,21 @@ Route::get('/', function () {
 		return view('welcome');
 	});
 
+Route::get('/inputTest', [
+		'as'   => 'inputTest',
+		'uses' => 'TestController@inputTest'
+	]);
+
+Route::get('/listItem', [
+		'as'   => 'listItem',
+		'uses' => 'StudentController@listItem'
+	]);
+
+Route::post('/postTest', [
+		'as'   => 'postTest',
+		'uses' => 'TestController@postTest'
+	]);
+
 Route::get('/input', [
 		'as'   => 'input',
 		'uses' => 'StudentController@input'
