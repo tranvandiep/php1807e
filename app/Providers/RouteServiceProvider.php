@@ -54,6 +54,10 @@ class RouteServiceProvider extends ServiceProvider {
 		Route::middleware('web')
 			->namespace($this->namespace)
 			->group(base_path('routes/user.php'));
+		//Buoc 1 - cai dat route
+		Route::middleware('web')
+			->namespace($this->namespace)
+			->group(base_path('routes/news.php'));
 	}
 
 	/**
