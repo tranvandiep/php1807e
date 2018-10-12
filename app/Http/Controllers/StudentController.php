@@ -111,6 +111,7 @@ class StudentController extends Controller {
 	}
 
 	public function input(Request $request) {
+		echo stripVN('Trần Văn Điệp');
 		# code...
 		$id       = 0;
 		$student  = null;
