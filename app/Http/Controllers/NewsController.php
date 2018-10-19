@@ -28,6 +28,7 @@ class NewsController extends Controller {
 
 	public function detail(Request $request, $href_pram) {
 		# code...
+		$menus  = DB::table('menus')->get();
 		$detail = DB::table('news')
 			->where('href_param', $href_pram)
 			->get();
@@ -36,7 +37,8 @@ class NewsController extends Controller {
 		}
 
 		return view('news/detail')->with([
-				'detail' => $detail
+				'detail' => $detail,
+				'menus'  => $menus
 			]);
 	}
 }
